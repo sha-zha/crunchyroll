@@ -14,14 +14,14 @@
 
         <div class="w-full bg-[#EFEFEF] p-3.5 rounded-tl-[40px]">
             <div class="grid grid-cols-1 md:grids-cols-2 lg:grid-cols-3 gap-x-3.5 gap-y-3.5" :is-show="show">
-                <div class="bg-white rounded-[40px] min-h-[350px] flex flex-col items-center lg:items-start" v-for="media in medias">
-                    <div class="rounded-[40px] mx-auto min-h-[121px] bg-cover bg-norepeat" :style="{backgroundImage: `url('${media.coverImage.large}')`}">
+                <div class="bg-white rounded-[40px] min-h-[350px] flex flex-col justify-center items-center lg:items-start space-y-3.5" v-for="media in medias">
+                    <div class="rounded-[40px] mx-auto lg:mx-[50px] w-[266px] min-h-[121px] bg-cover bg-norepeat" :style="{backgroundImage: `url('${media.coverImage.large}')`}">
 
                     </div>
-<div class="pl-[50px] flex flex-col flex-wrap space-y-3.5">
+<div class="px-[50px] flex flex-col flex-wrap space-y-3.5">
     <h3>{{ media.title.romaji }}</h3>
     <span>{{media.episodes}} {{ (media.episodes > 1)? 'épisodes' : 'épisode'}}</span>
-    <a :href="`/show/${media.id}`" class="bg-[#F47520] text-white text-xs border-solid border-[#F47520] p-3.5 rounded-lg">Voir les épisodes</a>
+    <a :href="`/show/${media.id}`" class="bg-[#F47520] text-white text-xs border-solid border-[#F47520] p-3.5 rounded-lg max-w-[117px]">Voir les épisodes</a>
 </div>
 
                 </div>
@@ -29,31 +29,31 @@
         </div>
 
     </section>
+    <section is-show="show" v-if="page">
+        <div class="flex w-full  justify-center">
+            <nav aria-label="Page navigation example">
+                <ul class="flex list-style-none">
+                    <li class="page-item" v-if="page.currentPage > 1"><a
+                            class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+                            @click="setListe(Number(page.currentPage)- 1)">Précédent</a></li>
+                    <li class="page-item active"><a
+                            class="page-link relative block py-1.5 px-3 border-0 bg-blue-600 outline-none transition-all duration-300 rounded-full text-white hover:text-white hover:bg-blue-600 shadow-md focus:shadow-md"
+                            :href="`/listing/${page.currentPage}`">{{page.currentPage}} <span class="visually-hidden"></span></a></li>
+
+                    <li class="page-item"><a
+                            class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+                            @click="setListe(Number(page.currentPage)+ 1)">{{Number(page.currentPage)+ 1}}</a></li>
+
+                    <li class="page-item" v-if="page.currentPage < page.lastPage"><a
+                            class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+                            @click="setListe(Number(page.currentPage)+ 1)">Suivant</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
 </main>
 </body>
-<footer>
-    <div class="flex w-full  justify-center">
-        <nav aria-label="Page navigation example">
-            <ul class="flex list-style-none">
-                <li class="page-item disabled"><a
-                        class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-500 pointer-events-none focus:shadow-none"
-                        href="#" tabindex="-1" aria-disabled="true">Précédent</a></li>
-                <li class="page-item"><a
-                        class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-                        href="#">1</a></li>
-                <li class="page-item active"><a
-                        class="page-link relative block py-1.5 px-3 border-0 bg-blue-600 outline-none transition-all duration-300 rounded-full text-white hover:text-white hover:bg-blue-600 shadow-md focus:shadow-md"
-                        href="#">2 <span class="visually-hidden"></span></a></li>
-                <li class="page-item"><a
-                        class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-                        href="#">3</a></li>
-                <li class="page-item"><a
-                        class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-                        href="#">Suivant</a></li>
-            </ul>
-        </nav>
-    </div>
-</footer>
+
 <script src="https://unpkg.com/vue@3"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="module" src="/javascripts/main.js"></script>

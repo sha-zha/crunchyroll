@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 router.get('/liste', mainController.index);
 router.get('/show/:id', mainController.show);
 router.get('/listing',mainController.listing);
+router.get('/listing/:page',mainController.listingPag);
 router.get('/showing/:id', mainController.showing);
 
 module.exports = router;

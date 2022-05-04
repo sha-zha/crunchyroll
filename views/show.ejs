@@ -13,17 +13,20 @@
     <section class="min-h-screen flex flex-row">
         <div class="w-full bg-[#EFEFEF] p-3.5 rounded-tl-[40px]">
             <div class="grid grid-cols-1 gap-x-3.5 gap-y-3.5" :is-show="show">
-                <div class="bg-white rounded-[40px] min-h-[350px] flex flex-col items-center" v-for="media in medias">
-                    <div class="rounded-[40px] mx-auto min-h-[121px] bg-cover bg-norepeat">
+                <div class="bg-white rounded-t-[40px] flex flex-row flex-wrap items-start" v-for="media in medias">
+                    <div class=" w-full lg:w-1/4 bg-cover sm:bg-contain bg-no-repeat h-full rounded-tl-[40px]  mx-auto min-h-[121px]" :style="{backgroundImage: `url('${media.coverImage.extraLarge}')`}">
 
                     </div>
-                    <div class="pl-[50px] flex flex-col flex-wrap space-y-3.5">
+                    <div class="p-[20px] lg:p-[50px] flex flex-col  flex-wrap space-y-3.5 w-full bg-white lg:w-3/4">
                         <h3>{{ media.title.romaji }}</h3>
                         <span>{{media.episodes}} {{ (media.episodes > 1)? 'épisodes' : 'épisode'}}</span>
                         <p>{{media.status}}</p>
                         <div class="inline-flex space-x-3 5 flex-wrap ">
                             <span v-for="genre in media.genres"> {{genre}}</span>
                         </div>
+
+                    </div>
+                    <div class="bg-white p-[20px] rounded-b-[40px] w-full border-t-solid border-[#F47520]" v-html="media.description">
 
                     </div>
                 </div>
