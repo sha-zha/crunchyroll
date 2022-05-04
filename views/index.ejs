@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="32x32" href="/images/logo.png"/>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+
+</head>
+<body class="p-0">
+<header class="h-16">
+    <nav>
+        <ul class="flex justify-around items-center flex-wrap space-x-[50px]">
+            <li>logo</li>
+            <li>button</li>
+            <li>button</li>
+        </ul>
+    </nav>
+</header>
+<main id="app">
+   <section class="min-h-screen flex flex-row">
+       <nav class="w-2/12">
+           <ul>
+               <li>accueil</li>
+               <li>filtres</li>
+           </ul>
+       </nav>
+       <div class="w-10/12">
+Crunchyroll se refait une bouté
+
+           <a href="/liste">Voir le catalogue   </a>
+       </div>
+   </section>
+</main>
+</body>
+<script type="application/ecmascript">
+
+
+    Vue.createApp({
+        data() {
+            return {
+                message: 'Hello Vue!'
+            }
+        },
+
+    }).mount('#app')
+</script>
+</html>
